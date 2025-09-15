@@ -62,11 +62,17 @@ def get_session_history(session_id: str) -> InMemoryChatMessageHistory:
 # ---------- LLM + chain ----------
 llm = ChatGroq(model_name=model_name, temperature=temperature)
 
+system_template = (
+    "You are a helpful assistant. "
+    "You are running the Groq model: {model_name}. "
+    "If the user asks 'what model are you?', answer exactly '{model_name}'."
+)
+
 prompt = ChatPromptTemplate.from_messages([
-    ("system", "You are a helpful assistant."),
-    MessagesPlaceholder("history"),  # <- memory goes here
+    ("system", system_template),
+    MessagesPlaceholder("history"),
     ("human", "{input}"),
-])
+]).partial(model_name=model_name)  # <-- fills {model_name} with the selected option
 
 chain = prompt | llm | StrOutputParser()
 
