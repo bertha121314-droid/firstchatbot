@@ -29,7 +29,7 @@ st.title("💬 Chat with Memory (Groq + LangChain)")
 with st.sidebar:
     st.header("Settings")
     temperature = st.slider("Temperature", 0.0, 1.0, 0.2, 0.05)
-    model_name = st.selectbox("Model", ["llama-3.3-70b-versatile", "qwen/qwen3-32b","deepseek-r1-distill-llama-70b"], index=0)
+    model_name = st.selectbox("Model", ["llama-3.3-70b-versatile","gemma2-9b-it","qwen/qwen3-32b","deepseek-r1-distill-llama-70b"], index=0)
 
     col1, col2 = st.columns(2)
     with col1:
