@@ -8,4 +8,4 @@ langchain-google-genai
 streamlit
 groq
 streamlit
-streamlet-chat
+streamlit-chat
